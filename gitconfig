@@ -1,0 +1,16 @@
+[user]
+	name = Flaudísio Tolentino
+	email = flaudisio@flaudisio.com
+[alias]
+	s = status
+	g = gui
+	b = branch
+	p = pull
+	l = log
+	ck = checkout
+[help]
+	format = web
+[color]
+	ui = true
+[gui]
+	spellingdictionary = none
