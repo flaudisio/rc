@@ -8,8 +8,6 @@
 	p = pull
 	l = log
 	ck = checkout
-[help]
-	format = web
 [color]
 	ui = true
 [gui]
