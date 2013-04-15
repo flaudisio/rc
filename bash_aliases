@@ -1,3 +1,8 @@
+### Opções gerais
+
+# export PAGER="most -s"
+alias man='PAGER="most -s" man'
+
 ### Aliases
 
 alias lsl='ls -lh'
@@ -13,7 +18,7 @@ alias keep-all='sudo aptitude keep-all'
 alias debian-init-berserker='vboxheadless --vrde off --startvm Berserker &'
 alias debian-init-blackheart='vboxheadless --vrde off --startvm Blackheart &'
 alias debian-init-deadpool='vboxheadless --vrde off --startvm Deadpool &'
-alias win-init-blaze='vboxheadless --vrde off --startvm Win2k3-blaze &'
+alias win-init-blaze='vboxheadless --vrde off --startvm Blaze &'
 
 ### Comandos
 
