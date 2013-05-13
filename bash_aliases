@@ -1,24 +1,27 @@
-### Opções gerais
-
-# export PAGER="most -s"
-alias man='PAGER="most -s" man'
-
 ### Aliases
 
+# Coreutils
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
 alias sl='lsl'
+alias rm='rm -I'
 
+alias man='PAGER="most -s" man'
+
+# APT
 alias update='sudo aptitude update'
 alias safeupgrade='sudo aptitude safe-upgrade --full-resolver'
 alias clean='sudo aptitude clean'
 alias forget-new='sudo aptitude forget-new'
 alias keep-all='sudo aptitude keep-all'
 
-alias debian-init-berserker='vboxheadless --vrde off --startvm Berserker &'
-alias debian-init-blackheart='vboxheadless --vrde off --startvm Blackheart &'
-alias debian-init-deadpool='vboxheadless --vrde off --startvm Deadpool &'
-alias win-init-blaze='vboxheadless --vrde off --startvm Blaze &'
+# VirtualBox
+alias vbox-init-vm='vboxheadless --vrde off --startvm'
+alias debian-init-berserker='vbox-init-vm Berserker &'
+alias debian-init-blackheart='vbox-init-vm Blackheart &'
+alias debian-init-deadpool='vbox-init-vm Deadpool &'
+alias debian-init-fury='vbox-init-vm Fury &'
+alias win-init-blaze='vbox-init-vm Blaze &'
 
 ### Comandos
 
