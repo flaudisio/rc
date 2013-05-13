@@ -45,13 +45,13 @@ fixperms() {
 
     [ "$1" = "-v" ] && { arg="-v" ; shift ; }
 
-    echo "Changing directory permissions in '${*}' to 775 (rwxrwxr-x) ..."
-    find "${*}" -type d -exec chmod $arg 775 {} \;
+    echo "Updating directory permissions of '${*}' to 755 (rwxr-xr-x) ..."
+    find "${*}" -type d -exec chmod $arg 755 {} \;
 
     [ -n "$arg" ] && echo
 
-    echo "Changing file permissions in '${*}' to 664 (rw-rw-r--) ..."
-    find "${*}" -type f -exec chmod $arg 664 {} \;
+    echo "Updating file permissions of '${*}' to 644 (rw-r--r--) ..."
+    find "${*}" -type f -exec chmod $arg 644 {} \;
 }
 
 # virtualenvwrapper
