@@ -1,0 +1,12 @@
+# The Coeso nanorc
+
+set const
+set historylog
+set nohelp
+set nowrap
+set rebindkeypad
+set smarthome
+set smooth
+set suspend
+set tabsize 4
+set tabstospaces
