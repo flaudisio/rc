@@ -1,5 +1,5 @@
 [Configuration]
-ColorCursor=#12adac5a0000
+ColorCursor=#1313acac0000
 ColorSelection=#16163b3b5959
 ColorSelectionUseDefault=FALSE
 ColorPalette2=#a66600004555
@@ -34,4 +34,6 @@ MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
 TabActivityColor=#b7e900000ec7
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+ColorBackground=#1eb11eb11eb1
+ColorPalette1=#1f1f1f1f1f1f
 
