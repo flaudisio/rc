@@ -27,7 +27,7 @@ alias win-init-blaze='vbox-init-vm Blaze &'
 
 mkcd() {
     if [ -z "$1" ] ; then
-        echo mkcd: missing operand
+        echo "mkcd: missing operand"
         return 1
     fi
 
@@ -36,22 +36,22 @@ mkcd() {
 }
 
 fixperms() {
-    local arg
+    local v
+
+    [ "$1" = "-v" ] && { v="-v" ; shift ; }
 
     [ -z "$*" ] && {
-        echo fixperms: missing operand
+        echo "fixperms: missing operand"
         return 1
     }
 
-    [ "$1" = "-v" ] && { arg="-v" ; shift ; }
-
     echo "Updating directory permissions of '${*}' to 755 (rwxr-xr-x) ..."
-    find "${*}" -type d -exec chmod $arg 755 {} \;
+    find "${*}" -type d -exec chmod $v 755 {} \;
 
-    [ -n "$arg" ] && echo
+    [ -n "$v" ] && echo
 
     echo "Updating file permissions of '${*}' to 644 (rw-r--r--) ..."
-    find "${*}" -type f -exec chmod $arg 644 {} \;
+    find "${*}" -type f -exec chmod $v 644 {} \;
 }
 
 # virtualenvwrapper
