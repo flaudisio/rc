@@ -60,5 +60,9 @@ load_virtualenvwrapper() {
     export PROJECT_HOME=$HOME/Devel
     source /usr/local/bin/virtualenvwrapper.sh
 
-    [ "$1" = "-f" ] && workon flaudisio
+    case $1 in
+        -f) workon flaudisio ;;
+        -s) workon sysadmin  ;;
+         *) echo "Nenhum perfil escolhido. Carregando virtualenv padrão." ;;
+    esac
 }
