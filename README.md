@@ -1,6 +1,4 @@
-pontoarquivos
-=============
+rc
+==
 
-Alguns arquivos de configuração úteis.
-
-Em breve farei um script para instalá-los, ou não.
+Arquivos úteis de configuração/execução.
