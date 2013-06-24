@@ -23,14 +23,15 @@ set shiftwidth=4
 set tabstop=4
 
 set number
-" set colorcolumn=80
+set colorcolumn=80
 set ruler
 set title
 
 " Cursor column & line
-" :highlight CursorColumn guibg=#303030
+highlight CursorColumn ctermbg=DarkGray
+highlight ColorColumn ctermbg=DarkGray
 " set cursorline
-" set cursorcolumn
+set cursorcolumn
 
 " Indentation
 " filetype plugin indent on
