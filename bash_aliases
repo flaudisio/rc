@@ -32,7 +32,7 @@ alias win-init-blaze='vbox-init-vm Blaze &'
 
 mkcd() {
     if [ -z "$1" ] ; then
-        echo "mkcd: missing operand"
+        echo "mkcd: missing operand" >&2
         return 1
     fi
 
@@ -46,7 +46,7 @@ fixperms() {
     [ "$1" = "-v" ] && { v="-v" ; shift ; }
 
     [ -z "$*" ] && {
-        echo "fixperms: missing operand"
+        echo "fixperms: missing operand" >&2
         return 1
     }
 
