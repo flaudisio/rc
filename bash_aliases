@@ -1,12 +1,17 @@
 ### Aliases
 
 # Coreutils
+alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
-alias sl='lsl'
+alias l='lsl'
+alias la='lsa'
 alias rm='rm -I'
 
 alias man='PAGER="most -s" man'
+
+alias gitcmd='sudo -u git'
+alias wwwcmd='sudo -u www-data'
 
 # APT
 alias update='sudo aptitude update'
@@ -20,7 +25,7 @@ alias vbox-init-vm='vboxheadless --vrde off --startvm'
 alias debian-init-berserker='vbox-init-vm Berserker &'
 alias debian-init-blackheart='vbox-init-vm Blackheart &'
 alias debian-init-deadpool='vbox-init-vm Deadpool &'
-alias debian-init-fury='vbox-init-vm Fury &'
+alias debian-init-mephisto='vbox-init-vm Mephisto &'
 alias win-init-blaze='vbox-init-vm Blaze &'
 
 ### Comandos
@@ -55,14 +60,13 @@ fixperms() {
 }
 
 # virtualenvwrapper
-load_virtualenvwrapper() {
+load_virtualenv() {
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Devel
     source /usr/local/bin/virtualenvwrapper.sh
 
-    case $1 in
-        -f) workon flaudisio ;;
-        -s) workon sysadmin  ;;
-         *) echo "Nenhum perfil escolhido. Carregando virtualenv padrão." ;;
-    esac
+    [ $1 ] && {
+        echo "Carregando virtualenv: $1"
+        workon $1
+    }
 }
