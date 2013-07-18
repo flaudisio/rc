@@ -61,9 +61,10 @@ fixperms() {
 
 # virtualenvwrapper
 load_virtualenv() {
+    source /usr/local/bin/virtualenvwrapper.sh || return 1
+
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Devel
-    source /usr/local/bin/virtualenvwrapper.sh
 
     [ $1 ] && {
         echo "Carregando virtualenv: $1"
