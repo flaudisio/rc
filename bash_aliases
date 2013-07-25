@@ -1,6 +1,7 @@
 ### Aliases
 
-# Coreutils
+# Core
+alias ..='cd ..'
 alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
@@ -8,8 +9,10 @@ alias l='lsl'
 alias la='lsa'
 alias rm='rm -I'
 
+# Misc
 alias man='PAGER="most -s" man'
 
+# Sudo
 alias gitcmd='sudo -u git'
 alias wwwcmd='sudo -u www-data'
 
