@@ -34,8 +34,8 @@ alias win-init-blaze='vbox-init-vm Blaze &'
 ### Comandos
 
 ..() {
-    hops=$1
-    dest=""
+    local hops=$1
+    local dest=""
 
     [ -z "$hops" ] && { cd .. ; return ; }
 
