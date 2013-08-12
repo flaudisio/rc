@@ -1,7 +1,6 @@
 ### Aliases
 
 # Core
-alias ..='cd ..'
 alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
@@ -10,6 +9,7 @@ alias la='lsa'
 alias rm='rm -I'
 
 # Misc
+alias diff='colordiff'
 alias man='PAGER="most -s" man'
 
 # Sudo
@@ -32,6 +32,25 @@ alias debian-init-mephisto='vbox-init-vm Mephisto &'
 alias win-init-blaze='vbox-init-vm Blaze &'
 
 ### Comandos
+
+..() {
+    hops=$1
+    dest=""
+
+    [ -z "$hops" ] && { cd .. ; return ; }
+
+    [[ $hops =~ ^[0-9]+$ ]] || {
+        echo "uso: .. [N]" >&2
+        return 1
+    }
+
+    while [ $hops -gt 0 ] ; do
+        dest="${dest}../"
+        let 'hops--'
+    done
+
+    cd $dest
+}
 
 mkcd() {
     if [ -z "$1" ] ; then
@@ -69,8 +88,7 @@ load_virtualenv() {
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Devel
 
-    [ $1 ] && {
-        echo "Carregando virtualenv: $1"
-        workon $1
+    [ "$1" ] && {
+        workon $1 && echo "Carregando virtualenv: $1"
     }
 }
