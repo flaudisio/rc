@@ -24,12 +24,7 @@ alias forget-new='sudo aptitude forget-new'
 alias keep-all='sudo aptitude keep-all'
 
 # VirtualBox
-alias vbox-init-vm='vboxheadless --vrde off --startvm'
-alias debian-init-berserker='vbox-init-vm Berserker &'
-alias debian-init-blackheart='vbox-init-vm Blackheart &'
-alias debian-init-deadpool='vbox-init-vm Deadpool &'
-alias debian-init-mephisto='vbox-init-vm Mephisto &'
-alias win-init-blaze='vbox-init-vm Blaze &'
+alias vminit='vboxheadless --vrde off --startvm'
 
 ### Comandos
 
