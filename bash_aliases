@@ -11,8 +11,10 @@ alias rm='rm -I'
 # Misc
 alias diff='colordiff'
 alias man='PAGER="most -s" man'
+alias treegit='tree -aI .git'
 
 # Sudo
+alias rsalt='sudo -H salt'
 alias gitcmd='sudo -u git'
 alias wwwcmd='sudo -u www-data'
 
