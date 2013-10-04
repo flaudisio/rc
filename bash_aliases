@@ -11,7 +11,7 @@ alias rm='rm -I'
 # Misc
 alias diff='colordiff'
 alias man='PAGER="most -s" man'
-alias treegit='tree -aI .git'
+alias tree-no-git='tree -aI .git'
 
 # Sudo
 alias rsalt='sudo -H salt'
@@ -20,7 +20,7 @@ alias wwwcmd='sudo -u www-data'
 
 # APT
 alias update='sudo aptitude update'
-alias safeupgrade='sudo aptitude safe-upgrade --full-resolver'
+alias safeupgrade='sudo aptitude safe-upgrade'
 alias clean='sudo aptitude clean'
 alias forget-new='sudo aptitude forget-new'
 alias keep-all='sudo aptitude keep-all'
