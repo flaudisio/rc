@@ -15,8 +15,8 @@ alias tree-no-git='tree -aI .git'
 
 # Sudo
 alias rsalt='sudo -H salt'
-alias gitcmd='sudo -u git'
-alias wwwcmd='sudo -u www-data'
+alias gitcmd='sudo -u git -H'
+alias wwwcmd='sudo -u www-data -H'
 
 # APT
 alias update='sudo aptitude update'
