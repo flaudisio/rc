@@ -12,3 +12,5 @@
 	ui = true
 [gui]
 	spellingdictionary = none
+[push]
+	default = matching

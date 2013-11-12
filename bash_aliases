@@ -39,7 +39,7 @@ alias vminit='vboxheadless --vrde off --startvm'
 
     [[ $hops =~ ^[0-9]+$ ]] || {
         echo "uso: .. [N]" >&2
-        return 1
+        return 2
     }
 
     while [ $hops -gt 0 ] ; do
@@ -84,7 +84,6 @@ load_virtualenv() {
     source /usr/local/bin/virtualenvwrapper.sh || return 1
 
     export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/Devel
 
     [ "$1" ] && {
         workon $1 && echo "Carregando virtualenv: $1"
