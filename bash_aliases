@@ -13,6 +13,7 @@ alias diff='colordiff'
 alias man='PAGER="most -s" man'
 alias tree-no-git='tree -aI .git'
 alias nano='vim'
+alias delpyc='find . -iname "*.pyc" -print -delete'
 
 # Sudo
 alias rsalt='sudo -H salt'
@@ -80,10 +81,9 @@ fixperms() {
 }
 
 # virtualenvwrapper
-load_virtualenv() {
+load_virtualenvwrapper() {
+    export WORKON_HOME=/opt/envs/$(whoami)
     source /usr/local/bin/virtualenvwrapper.sh || return 1
-
-    export WORKON_HOME=$HOME/.virtualenvs
 
     [ "$1" ] && {
         workon $1 && echo "Carregando virtualenv: $1"
