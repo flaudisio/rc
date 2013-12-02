@@ -8,6 +8,8 @@
 	p = pull
 	l = log
 	ck = checkout
+	d = diff
+	dc = diff --check
 [color]
 	ui = true
 [gui]
