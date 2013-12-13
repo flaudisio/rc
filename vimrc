@@ -45,3 +45,5 @@ set incsearch
 " Font and Window
 set encoding=utf-8
 
+" Shortcuts
+map 0 ^

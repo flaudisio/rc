@@ -12,7 +12,6 @@ alias rm='rm -I'
 alias diff='colordiff'
 alias man='PAGER="most -s" man'
 alias tree-no-git='tree -aI .git'
-alias nano='vim'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 
 # Sudo
