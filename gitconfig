@@ -11,9 +11,12 @@
 	d = diff
 	dc = diff --check
 	f = fetch
+	sw = show
 [color]
 	ui = true
 [gui]
 	spellingdictionary = none
 [push]
 	default = matching
+[merge]
+	defaultToUpstream = true

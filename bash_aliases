@@ -1,6 +1,7 @@
 ### Aliases
 
 # Core
+alias -- -='cd -'
 alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
@@ -15,9 +16,10 @@ alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 
 # Sudo
-alias rsalt='sudo -H salt'
-alias gitcmd='sudo -u git -H'
-alias wwwcmd='sudo -u www-data -H'
+alias sudo='sudo -H'
+alias rsalt='sudo salt'
+alias gitcmd='sudo -u git'
+alias wwwcmd='sudo -u www-data'
 
 # APT
 alias update='sudo aptitude update'
@@ -28,6 +30,8 @@ alias keep-all='sudo aptitude keep-all'
 
 # VirtualBox
 alias vminit='vboxheadless --vrde off --startvm'
+alias vmlist='VBoxManage list vms'
+alias vmlistr='VBoxManage list runningvms'
 
 ### Comandos
 
