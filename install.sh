@@ -2,12 +2,12 @@
 
 BaseDir="$( readlink -f "$( dirname "$0" )" )"
 
+LnOpts="$@"
+
 echo "Criando links..."
 
-for f in \
-    bash_aliases gitconfig screenrc terminalrc vimrc
-do
-    ln -sv "$BaseDir/$f" "$HOME/.$f"
+for f in "$BaseDir/files"/* ; do
+    ln -sv $LnOpts "$f" "$HOME/.$( basename "$f" )"
 done
 
 echo "Pronto."
