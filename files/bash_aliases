@@ -55,12 +55,7 @@ alias vmlistr='VBoxManage list runningvms'
 }
 
 mkcd() {
-    if [ -z "$1" ] ; then
-        echo "mkcd: missing operand" >&2
-        return 1
-    fi
-
-    mkdir -pv "$*" || return 1
+    mkdir -pv "$*" || return $?
     cd "$*"
 }
 
