@@ -108,6 +108,38 @@ load_rvm() {
     fi
 }
 
+# Docker
+wipe_containers()
+{
+    [[ "$1" ]] || return 2
+
+    local opts
+    [[ "$1" == "--rm" ]] && opts="-a"
+
+    for c in $( docker ps -q $opts ) ; do
+        docker "${1/--/}" "$c"
+    done
+}
+
+kill_all_containers() { wipe_containers --kill ; }
+stop_all_containers() { wipe_containers --stop ; }
+rm_all_containers()   { wipe_containers --rm ; }
+
+rm_none_images()
+{
+    for i in $( docker images | egrep '^<none>' | awk '{ print $3 }' ) ; do
+        echo "--> Removendo $i"
+        docker rmi "$i"
+    done
+}
+
+docker_cleanup()
+{
+    for cmd in {kill,rm}_all_containers rm_none_images ; do
+        echo "-> $cmd"
+        "$cmd" || return 1
+    done
+}
 
 #
 # Completion
