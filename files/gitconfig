@@ -12,6 +12,7 @@
 	dc = diff --check
 	f = fetch
 	sw = show
+	rv = remote -v
 [color]
 	ui = true
 [gui]
