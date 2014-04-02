@@ -1,49 +1,47 @@
-" The Coeso VimRC
-
-" General
+" Geral
 set wildmenu
 set viminfo=
 
-" Disable backups
+" Desabilita backups
 set nobackup
 set noswapfile
 set nowritebackup
 
-" Colors - theme
+" Visual (cores, tema etc)
 filetype on
 " filetype plugin on
 syntax on
 colorscheme elflord
 set background=dark
 
-" Tabs to spaces & column
+set number
+set ruler
+set title
+
+" Tabs e espaços
 set expandtab
 set nostartofline
 set shiftwidth=4
 set tabstop=4
 
-set number
-set colorcolumn=80
-set ruler
-set title
-
-" Cursor column & line
-highlight CursorColumn ctermbg=DarkGray
-highlight ColorColumn ctermbg=DarkGray
+" Cursor e colunas
 " set cursorline
 set cursorcolumn
+set colorcolumn=80
+highlight CursorColumn ctermbg=DarkGray
+highlight ColorColumn ctermbg=DarkGray
 
-" Indentation
+" Indentação
 " filetype plugin indent on
 " set autoindent
 
-" Search
-set hlsearch
+" Busca
 set ignorecase
+set hlsearch
 set incsearch
 
-" Font and Window
+" Codificação
 set encoding=utf-8
 
-" Shortcuts
+" Atalhos
 map 0 ^
