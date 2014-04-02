@@ -9,7 +9,7 @@ set nowritebackup
 
 " Visual (cores, tema etc)
 filetype on
-" filetype plugin on
+filetype plugin off
 syntax on
 colorscheme elflord
 set background=dark
@@ -42,6 +42,10 @@ set incsearch
 
 " Codificação
 set encoding=utf-8
+set fileencoding=utf-8
 
 " Atalhos
 map 0 ^
+
+" Pathogen
+execute pathogen#infect()
