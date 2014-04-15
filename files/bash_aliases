@@ -8,7 +8,6 @@ alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
 alias l='lsl'
-alias la='lsa'
 alias rm='rm -I'
 
 # Misc
