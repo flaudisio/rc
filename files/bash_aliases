@@ -12,7 +12,7 @@ alias rm='rm -I'
 
 # Misc
 alias diff='colordiff'
-alias man='PAGER="most -s" man'
+alias man='man -P most'
 alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 
