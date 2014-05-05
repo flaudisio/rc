@@ -47,5 +47,8 @@ set fileencoding=utf-8
 " Atalhos
 map 0 ^
 
+map <Tab> :tabnext<cr>
+map <S-Tab> :tabprevious<cr>
+
 " Pathogen
-execute pathogen#infect()
+" execute pathogen#infect()
