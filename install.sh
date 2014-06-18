@@ -6,7 +6,7 @@ LnOpts="$@"
 
 echo "Criando links..."
 
-for f in "$BaseDir/files"/* ; do
+for f in "$BaseDir/dotfiles"/* ; do
     ln -sv $LnOpts "$f" "$HOME/.$( basename "$f" )"
 done
 
