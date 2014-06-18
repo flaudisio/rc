@@ -1,4 +1,12 @@
 #
+# Config
+#
+
+if command -v sudo > /dev/null ; then
+    _sudo="sudo "
+fi
+
+#
 # Aliases
 #
 
@@ -7,73 +15,81 @@ alias -- -='cd -'
 alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
-alias l='lsl'
 alias rm='rm -I'
 
 # Misc
-alias diff='colordiff'
-alias man='man -P most'
 alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 
-# Sudo
-alias sudo='sudo -H'
-alias rsalt='sudo salt'
-alias gitcmd='sudo -u git'
-alias wwwcmd='sudo -u www-data'
+command -v colordiff > /dev/null &&
+    alias diff='colordiff'
+
+command -v most > /dev/null &&
+    alias man='man -P most'
+
+# sudo
+if [[ -n "_sudo" ]] ; then
+    alias gitcmd='sudo -u git'
+    alias wwwcmd='sudo -u www-data'
+fi
 
 # APT
-alias update='sudo aptitude update'
-alias safeupgrade='sudo aptitude safe-upgrade'
-alias clean='sudo aptitude clean'
-alias forget-new='sudo aptitude forget-new'
-alias keep-all='sudo aptitude keep-all'
-alias list-new='aptitude search ~N'
+alias update="${_sudo}aptitude update"
+alias safeupgrade="${_sudo}aptitude safe-upgrade"
+alias clean="${_sudo}aptitude clean"
+alias forget-new="${_sudo}aptitude forget-new"
+alias keep-all="${_sudo}aptitude keep-all"
+alias list-new="aptitude search ~N"
 
 # VirtualBox
-alias vmlist='VBoxManage list vms'
-alias vmlistr='VBoxManage list runningvms'
-
+if command -v VBoxManage > /dev/null ; then
+    alias vmlist='VBoxManage list vms'
+    alias vmlistr='VBoxManage list runningvms'
+fi
 
 #
-# Comandos
+# Funções
 #
 
-vminit() {
-    [ "$1" ] || return 2
+vminit()
+{
+    [[ "$1" ]] || return 2
     vboxheadless --vrde off --startvm "$1" > /dev/null &
 }
 
-..() {
+..()
+{
     local hops=$1
     local dest=""
 
-    [ -z "$hops" ] && { cd .. ; return ; }
+    [[ -z "$hops" ]] && { cd .. ; return ; }
 
     [[ $hops =~ ^[0-9]+$ ]] || {
         echo "uso: .. [N]" >&2
         return 2
     }
 
-    while [ $hops -gt 0 ] ; do
+    while [[ $hops -gt 0 ]] ; do
         dest="${dest}../"
         let 'hops--'
     done
 
-    cd $dest
+    cd "$dest"
 }
 
-mkcd() {
-    mkdir -pv "$*" || return $?
+mkcd()
+{
+    mkdir -pv "$*" || return
     cd "$*"
 }
 
-fixperms() {
+fixperms()
+{
     local v
 
-    [ "$1" = "-v" ] && { v="-v" ; shift ; }
+    [[ "$1" = "-v" ]] && { v="-v" ; shift ; }
 
-    [ -z "$*" ] && {
+    [[ -z "$1" ]] && {
         echo "fixperms: missing operand" >&2
         return 1
     }
@@ -81,29 +97,31 @@ fixperms() {
     echo "Updating directory permissions of '${*}' to 755 (rwxr-xr-x) ..."
     find "${*}" -type d -exec chmod $v 755 {} \;
 
-    [ -n "$v" ] && echo
+    [[ -n "$v" ]] && echo
 
     echo "Updating file permissions of '${*}' to 644 (rw-r--r--) ..."
     find "${*}" -type f -exec chmod $v 644 {} \;
 }
 
 # virtualenvwrapper
-load_virtualenvwrapper() {
-    export WORKON_HOME=/opt/envs/$(whoami)
-    source /usr/local/bin/virtualenvwrapper.sh || return 1
+load_virtualenvwrapper()
+{
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh || return
 
-    [ "$1" ] && {
+    [[ "$1" ]] && {
         workon $1 && echo "Carregando virtualenv: $1"
     }
 }
 
 # rvm
-load_rvm() {
+load_rvm()
+{
     # Load RVM into a shell session *as a function*
     if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
         source "$HOME/.rvm/scripts/rvm"
     else
-        echo "Erro: RVM não encontrado." >&2
+        echo "erro: RVM não encontrado." >&2
         return 1
     fi
 }
@@ -123,7 +141,7 @@ wipe_containers()
 
 kill_all_containers() { wipe_containers --kill ; }
 stop_all_containers() { wipe_containers --stop ; }
-rm_all_containers()   { wipe_containers --rm ; }
+rm_all_containers()   { wipe_containers --rm   ; }
 
 rm_none_images()
 {
@@ -142,7 +160,7 @@ docker_cleanup()
 }
 
 #
-# Completion
+# Bash completion
 #
 
 _vminit()
@@ -153,3 +171,9 @@ _vminit()
 }
 
 complete -F _vminit vminit
+
+#
+# Limpeza
+#
+
+unset _sudo
