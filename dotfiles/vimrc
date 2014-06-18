@@ -51,4 +51,6 @@ map <Tab> :tabnext<cr>
 map <S-Tab> :tabprevious<cr>
 
 " Pathogen
-execute pathogen#infect()
+if filereadable(expand($HOME . "/.vim/autoload/pathogen.vim"))
+    execute pathogen#infect()
+endif

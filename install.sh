@@ -33,8 +33,6 @@ if [[ $Pathogen -eq 1 ]] ; then
 
         mkdir -pv ~/.vim/{autoload,bundle}
         wget -q https://tpo.pe/pathogen.vim -O ~/.vim/autoload/pathogen.vim
-
-        sed -i 's/^" execute pathogen/execute pathogen/' "$HOME/.vimrc"
     else
         echo "--> wget não encontrado, pathogen.vim não instalado." >&2
     fi
