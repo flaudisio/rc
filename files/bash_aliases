@@ -28,6 +28,7 @@ alias safeupgrade='sudo aptitude safe-upgrade'
 alias clean='sudo aptitude clean'
 alias forget-new='sudo aptitude forget-new'
 alias keep-all='sudo aptitude keep-all'
+alias list-new='aptitude search ~N'
 
 # VirtualBox
 alias vmlist='VBoxManage list vms'
