@@ -2,7 +2,7 @@
 # Config
 #
 
-if command -v sudo > /dev/null ; then
+if command -v sudo > /dev/null && [[ $( id -u ) -ne 0 ]] ; then
     _sudo="sudo "
 fi
 
@@ -27,7 +27,7 @@ command -v colordiff > /dev/null &&
 command -v most > /dev/null &&
     alias man='man -P most'
 
-# sudo
+# runas
 if [[ -n "_sudo" ]] ; then
     alias gitcmd='sudo -u git'
     alias wwwcmd='sudo -u www-data'
@@ -83,6 +83,7 @@ mkcd()
     cd "$*"
 }
 
+# Corrige permissões: diretórios = 755, arquivos = 644
 fixperms()
 {
     local v
