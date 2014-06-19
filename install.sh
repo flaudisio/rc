@@ -8,6 +8,18 @@ BaseDir="$( cd "$( dirname "$0" )" ; pwd )"
 LnOpts=""
 Pathogen=1
 
+usage()
+{
+    cat << EOF
+Uso: $0 [-f] [-P] [-h]
+
+Opções:
+    -f, --force         Sobrescreve os .arquivos existentes.
+    -P, --no-pathogen   Não instala o pathogen.vim.
+    -h, --help          Esta mensagem.
+EOF
+}
+
 while [[ $# -gt 0 ]] ; do
     case $1 in
         -f|--force)
@@ -15,6 +27,9 @@ while [[ $# -gt 0 ]] ; do
         ;;
         -P|--no-pathogen)
             Pathogen=0
+        ;;
+        -h|--help)
+            usage ; exit 0
         ;;
     esac
     shift
@@ -36,6 +51,8 @@ if [[ $Pathogen -eq 1 ]] ; then
     else
         echo "--> wget não encontrado, pathogen.vim não instalado." >&2
     fi
+else
+    echo "--> Pulando instalação do pathogen.vim."
 fi
 
 
