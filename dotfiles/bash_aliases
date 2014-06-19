@@ -160,19 +160,6 @@ docker_cleanup()
 }
 
 #
-# Bash completion
-#
-
-_vminit()
-{
-    local cur=${COMP_WORDS[COMP_CWORD]}
-
-    COMPREPLY=( $(compgen -W "$( vmlist | cut -d '"' -f 2 )" -- $cur) )
-}
-
-complete -F _vminit vminit
-
-#
 # Limpeza
 #
 
