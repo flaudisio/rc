@@ -28,7 +28,7 @@ command -v most > /dev/null &&
     alias man='man -P most'
 
 # runas
-if [[ -n "_sudo" ]] ; then
+if [[ -n "$_sudo" ]] ; then
     alias gitcmd='sudo -u git'
     alias wwwcmd='sudo -u www-data'
 fi
