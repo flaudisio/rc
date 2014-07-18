@@ -6,16 +6,18 @@
 BaseDir="$( cd "$( dirname "$0" )" ; pwd )"
 
 LnOpts=""
+GitConfig=1
 EnvDirs=1
 Pathogen=1
 
 usage()
 {
     cat << EOF
-Uso: $0 [-f] [-B] [-P] [-h]
+Uso: $0 [-f] [-G] [-D] [-P] [-h]
 
 Opções:
     -f, --force         Sobrescreve os .arquivos existentes.
+    -G, --no-gitconfig  Ignora a instalação do .gitconfig
     -D, --no-env-dirs   Não cria os diretórios ~/.bashrc.d e ~/.profile.d
     -P, --no-pathogen   Não instala o pathogen.vim.
     -h, --help          Esta mensagem.
@@ -26,6 +28,9 @@ while [[ $# -gt 0 ]] ; do
     case $1 in
         -f|--force)
             LnOpts="-f"
+        ;;
+        -G|--no-gitconfig)
+            GitConfig=0
         ;;
         -D|--no-env-dirs)
             EnvDirs=0
@@ -47,6 +52,10 @@ done
 echo "--> Instalando arquivos..."
 
 for f in "$BaseDir/dotfiles"/* ; do
+    if [[ $GitConfig -eq 0 && "$( basename $f )" == "gitconfig" ]] ; then
+        continue
+    fi
+
     ln -sv $LnOpts "$f" "$HOME/.$( basename "$f" )"
 done
 
