@@ -14,7 +14,7 @@
 	sw = show
 	rv = remote -v
 [color]
-	ui = true
+	ui = auto
 [gui]
 	spellingdictionary = none
 [push]
