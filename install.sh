@@ -16,9 +16,9 @@ usage()
 Uso: $0 [-f] [-G] [-D] [-P] [-h]
 
 Opções:
-    -f, --force         Sobrescreve os .arquivos existentes.
-    -G, --no-gitconfig  Ignora a instalação do .gitconfig
-    -D, --no-env-dirs   Não cria os diretórios ~/.bashrc.d e ~/.profile.d
+    -f, --force         Sobrescreve os arquivos existentes.
+    -G, --no-gitconfig  Não instala o .gitconfig.
+    -D, --no-env-dirs   Não cria os diretórios ~/.bashrc.d e ~/.profile.d.
     -P, --no-pathogen   Não instala o pathogen.vim.
     -h, --help          Esta mensagem.
 EOF
@@ -52,11 +52,13 @@ done
 echo "--> Instalando arquivos..."
 
 for f in "$BaseDir/dotfiles"/* ; do
-    if [[ $GitConfig -eq 0 && "$( basename $f )" == "gitconfig" ]] ; then
+    file="$( basename "$f" )"
+
+    if [[ $GitConfig -eq 0 && "$file" == "gitconfig" ]] ; then
         continue
     fi
 
-    ln -sv $LnOpts "$f" "$HOME/.$( basename "$f" )"
+    ln -sv $LnOpts "$f" "$HOME/.$file"
 done
 
 if [[ $EnvDirs -eq 1 ]] ; then
