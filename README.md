@@ -4,20 +4,13 @@ Arquivos úteis de configuração/execução.
 
 ## Instalação
 
-+ Clone o repositório:
++ Clone o repositório e execute o script `install.sh`:
 
         git clone https://github.com/flaudisio/rc.git ~/.rc
+        cd ~/.rc
+        ./install.sh
 
-+ Execute o script `install.sh`:
-
-        $ cd ~/.rc
-        $ ./install.sh -h
-        Uso: ./install.sh [-f] [-P] [-h]
-
-        Opções:
-            -f, --force         Sobrescreve os .arquivos existentes.
-            -P, --no-pathogen   Não instala o pathogen.vim.
-            -h, --help          Esta mensagem.
++ Use `./install.sh -h` para as opções de instalação.
 
 ## Licença
 
