@@ -160,6 +160,16 @@ docker_cleanup()
     done
 }
 
+pgreps()
+{
+    [[ "$1" ]] || {
+        echo "uso: $FUNCNAME <busca>" >&2
+        return 2
+    }
+
+    ps aux | egrep "$1"
+}
+
 #
 # Limpeza
 #
