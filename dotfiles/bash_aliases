@@ -170,6 +170,16 @@ pgreps()
     ps aux | egrep "$1"
 }
 
+debchangelog()
+{
+    [[ "$1" ]] || {
+        echo "uso: $FUNCNAME <pacote>" >&2
+        return 2
+    }
+
+    zless /usr/share/doc/$1/changelog*.gz
+}
+
 #
 # Limpeza
 #
