@@ -27,7 +27,12 @@ set tabstop=4
 " Cursor e colunas
 " set cursorline
 set cursorcolumn
-set colorcolumn=80
+
+" Vim 7.2 não suporta 'colorcolumn'
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
+
 highlight CursorColumn ctermbg=DarkGray
 highlight ColorColumn ctermbg=DarkGray
 
