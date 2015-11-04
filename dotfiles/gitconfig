@@ -13,11 +13,13 @@
 	f = fetch
 	sw = show
 	rv = remote -v
+	lo = log --oneline
+	fap = fetch --all --prune
 [color]
 	ui = auto
 [gui]
 	spellingdictionary = none
 [push]
-	default = matching
+	default = simple
 [merge]
 	defaultToUpstream = true

@@ -26,6 +26,7 @@ alias rsynci='rsync -e "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChec
 # Misc
 alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
+alias xc='xclip -sel clipboard'
 
 command -v colordiff > /dev/null &&
     alias diff='colordiff'
