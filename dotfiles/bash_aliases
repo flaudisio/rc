@@ -17,6 +17,12 @@ alias lsl='ls -lh'
 alias lsa='ls -lhA'
 alias rm='rm -I'
 
+# SSH
+alias scpi='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias sshi='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+alias rsynci='rsync -e "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
+
 # Misc
 alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
@@ -115,6 +121,15 @@ load_virtualenvwrapper()
     }
 }
 
+# rbenv
+load_rbenv()
+{
+    if [[ -d "$HOME/.rbenv" ]] ; then
+        export PATH="$HOME/.rbenv/bin:$PATH"
+        eval "$(rbenv init -)"
+    fi
+}
+
 # rvm
 load_rvm()
 {
@@ -136,25 +151,26 @@ wipe_containers()
     [[ "$1" == "--rm" ]] && opts="-a"
 
     for c in $( docker ps -q $opts ) ; do
-        docker "${1/--/}" "$c"
+        docker "${@/--/}" "$c"
     done
 }
 
-kill_all_containers() { wipe_containers --kill ; }
-stop_all_containers() { wipe_containers --stop ; }
-rm_all_containers()   { wipe_containers --rm   ; }
+kill_all_containers() { wipe_containers --kill  ; }
+stop_all_containers() { wipe_containers --stop  ; }
+rm_all_containers()   { wipe_containers --rm -v ; }
 
-rm_none_images()
+rm_dangling_images()
 {
-    for i in $( docker images | egrep '^<none>' | awk '{ print $3 }' ) ; do
-        echo "--> Removendo $i"
-        docker rmi "$i"
-    done
+    local dangling_images="$( docker images -q --filter 'dangling=true' )"
+
+    [[ -n "$dangling_images" ]] \
+        && docker rmi $dangling_images \
+        || echo "Nenhuma imagem órfã encontrada."
 }
 
 docker_cleanup()
 {
-    for cmd in {kill,rm}_all_containers rm_none_images ; do
+    for cmd in {kill,rm}_all_containers rm_dangling_images ; do
         echo "-> $cmd"
         "$cmd" || return 1
     done
@@ -167,7 +183,7 @@ pgreps()
         return 2
     }
 
-    ps aux | egrep "$1"
+    ps aux | egrep "$1" | grep -v egrep
 }
 
 debchangelog()
