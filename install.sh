@@ -6,21 +6,21 @@
 BaseDir="$( cd "$( dirname "$0" )" ; pwd )"
 
 LnOpts=""
-GitConfig=1
-EnvDirs=1
-Pathogen=1
+GitConfig=0
+EnvDirs=0
+Pathogen=0
 
 usage()
 {
     cat << EOF
-Uso: $0 [-f] [-G] [-D] [-P] [-h]
+Uso: $0 [opções]
 
 Opções:
-    -f, --force         Sobrescreve os arquivos existentes.
-    -G, --no-gitconfig  Não instala o .gitconfig.
-    -D, --no-env-dirs   Não cria os diretórios ~/.bashrc.d e ~/.profile.d.
-    -P, --no-pathogen   Não instala o pathogen.vim.
-    -h, --help          Esta mensagem.
+    -f, --force      Sobrescreve os arquivos existentes.
+    -g, --gitconfig  Instala o .gitconfig.
+    -d, --env-dirs   Cria os diretórios ~/.bashrc.d e ~/.profile.d.
+    -p, --pathogen   Instala o pathogen.vim.
+    -h, --help       Mostra esta mensagem.
 EOF
 }
 
@@ -29,14 +29,14 @@ while [[ $# -gt 0 ]] ; do
         -f|--force)
             LnOpts="-f"
         ;;
-        -G|--no-gitconfig)
-            GitConfig=0
+        -g|--gitconfig)
+            GitConfig=1
         ;;
-        -D|--no-env-dirs)
-            EnvDirs=0
+        -d|--env-dirs)
+            EnvDirs=1
         ;;
-        -P|--no-pathogen)
-            Pathogen=0
+        -p|--pathogen)
+            Pathogen=1
         ;;
         -h|--help)
             usage ; exit 0
