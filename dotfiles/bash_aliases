@@ -66,10 +66,8 @@ vminit()
 
 ..()
 {
-    local hops=$1
+    local hops="${1:-1}"
     local dest=""
-
-    [[ -z "$hops" ]] && { cd .. ; return ; }
 
     [[ $hops =~ ^[0-9]+$ ]] || {
         echo "uso: .. [N]" >&2
