@@ -2,19 +2,22 @@
 	name = Flaudísio Tolentino
 	email = flaudisio@gmail.com
 [alias]
-	s = status
-	g = gui
 	b = branch
-	p = pull
-	l = log
 	ck = checkout
 	d = diff
 	dc = diff --check
 	f = fetch
-	sw = show
-	rv = remote -v
-	lo = log --oneline
+	fa = fetch --all
 	fap = fetch --all --prune
+	g = gui
+	l = log
+	lo = log --oneline
+	rv = remote -v
+	s = status
+	sc = show --check
+	sw = show
+	uas = submodule foreach git pull
+	wtf = log --pretty=format:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\\\ by\\\\ %C(auto,blue)%cn%C(auto,reset),\\\\ %C(auto,cyan)%ar%C(auto,reset)%n\\\\ %s%n\" --stat
 [color]
 	ui = auto
 [gui]
