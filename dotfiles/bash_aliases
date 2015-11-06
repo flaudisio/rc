@@ -84,7 +84,7 @@ vminit()
 
 mkcd()
 {
-    mkdir -pv "$*" || return
+    mkdir -pv "$@" || return
     cd "$*"
 }
 
@@ -96,8 +96,8 @@ fixperms()
     [[ "$1" = "-v" ]] && { v="-v" ; shift ; }
 
     [[ -z "$1" ]] && {
-        echo "fixperms: missing operand" >&2
-        return 1
+        echo "$FUNCNAME: missing operand" >&2
+        return 2
     }
 
     echo "Updating directory permissions of '${*}' to 755 (rwxr-xr-x) ..."
@@ -171,7 +171,7 @@ docker_cleanup()
 {
     for cmd in {kill,rm}_all_containers rm_dangling_images ; do
         echo "-> $cmd"
-        "$cmd" || return 1
+        "$cmd" || return $?
     done
 }
 
