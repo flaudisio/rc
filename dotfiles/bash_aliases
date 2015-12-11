@@ -126,6 +126,9 @@ load_rbenv()
     if [[ -d "$HOME/.rbenv" ]] ; then
         export PATH="$HOME/.rbenv/bin:$PATH"
         eval "$(rbenv init -)"
+    else
+        echo "fatal: directory $HOME/.rbenv not found. Aborting." >&2
+        return 1
     fi
 }
 
@@ -136,7 +139,7 @@ load_rvm()
     if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
         source "$HOME/.rvm/scripts/rvm"
     else
-        echo "erro: RVM não encontrado." >&2
+        echo "fatal: RVM not found in $HOME/.rvm/scripts/rvm. Aborting." >&2
         return 1
     fi
 }
