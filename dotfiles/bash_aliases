@@ -170,9 +170,18 @@ rm_dangling_images()
         || echo "Nenhuma imagem órfã encontrada."
 }
 
+rm_dangling_volumes()
+{
+    local dangling_volumes="$( docker volume ls -q --filter 'dangling=true' )"
+
+    [[ -n "$dangling_volumes" ]] \
+        && docker volume rm $dangling_volumes \
+        || echo "Nenhum volume órfão encontrado."
+}
+
 docker_cleanup()
 {
-    for cmd in {kill,rm}_all_containers rm_dangling_images ; do
+    for cmd in {kill,rm}_all_containers rm_dangling_{images,volumes} ; do
         echo "-> $cmd"
         "$cmd" || return $?
     done
