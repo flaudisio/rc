@@ -49,6 +49,9 @@ set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
 
+" Sintaxe de arquivos
+au BufNewFile,BufRead Jenkinsfile set filetype=groovy
+
 " Atalhos
 map 0 ^
 
