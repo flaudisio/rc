@@ -6,6 +6,8 @@
 	ck = checkout
 	d = diff
 	dc = diff --check
+	dca = diff --staged
+	dcc = diff --check --staged
 	f = fetch
 	fa = fetch --all
 	fap = fetch --all --prune
