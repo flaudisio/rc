@@ -208,6 +208,47 @@ debchangelog()
     zless /usr/share/doc/$1/changelog*.gz
 }
 
+gci()
+{
+    local job_name="$1"
+    local available_jobs
+
+    if [[ ! -f .gitlab-ci.yml ]] ; then
+        echo "fatal: arquivo .gitlab-ci.yml não encontrado no diretório atual."
+        return 1
+    fi
+
+    if ! command -v gitlab-ci-multi-runner &> /dev/null ; then
+        echo "fatal: comando 'gitlab-ci-multi-runner' não encontrado."
+        return 1
+    fi
+
+    if [[ -z "$job_name" ]] ; then
+        available_jobs="$(
+            egrep -o '^[^[:blank:]].+:' .gitlab-ci.yml \
+                | cut -d ':' -f 1 \
+                | egrep -v '^(image|services|stages|types|before_script|after_script|variables|cache)$' \
+        )"
+
+        if [[ "$( echo "$available_jobs" | wc -l )" == "1" ]] ; then
+            job_name="$available_jobs"
+        else
+            echo "Jobs disponíveis:"
+            echo
+            echo "$available_jobs" | sed 's/^/  /'
+            echo
+            echo "Execute '$FUNCNAME <job>' para executar."
+
+            return 0
+        fi
+    fi
+
+    (
+        set -x
+        gitlab-ci-multi-runner exec docker "$job_name"
+    )
+}
+
 #
 # Limpeza
 #
