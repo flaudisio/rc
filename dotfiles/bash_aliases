@@ -24,6 +24,7 @@ alias sshi='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias rsynci='rsync -e "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
 
 # Misc
+alias tig='tig --all'
 alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 alias xc='xclip -sel clipboard'
