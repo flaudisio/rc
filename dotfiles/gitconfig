@@ -23,6 +23,9 @@
 [color]
 	ui = auto
 [gui]
+	# Ref: https://www.tcl.tk/man/tcl8.5/TkCmd/font.htm#M26
+	fontui = -family \"DejaVu Sans\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	spellingdictionary = none
 [push]
 	default = simple
