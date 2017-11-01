@@ -233,7 +233,7 @@ pgreps()
         return 2
     }
 
-    ps aux | egrep "$1" | grep -v egrep
+    ps aux | egrep "$1" | grep -v grep
 }
 
 debchangelog()
