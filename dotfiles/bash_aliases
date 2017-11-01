@@ -177,13 +177,15 @@ load_rvm()
 # Docker
 wipe_containers()
 {
+    local container
+    local docker_opts
+
     [[ "$1" ]] || return 2
 
-    local opts
-    [[ "$1" == "--rm" ]] && opts="-a"
+    [[ "$1" == "--rm" ]] && docker_opts="-a"
 
-    for c in $( docker ps -q $opts ) ; do
-        docker "${@/--/}" "$c"
+    for container in $( docker ps -q $docker_opts ) ; do
+        docker "${@/--/}" "$container"
     done
 }
 
@@ -211,7 +213,14 @@ rm_dangling_volumes()
 
 docker_cleanup()
 {
-    for cmd in {kill,rm}_all_containers rm_dangling_{images,volumes} ; do
+    local cmd
+
+    for cmd in \
+        kill_all_containers \
+        rm_all_containers \
+        rm_dangling_images \
+        rm_dangling_volumes
+    do
         echo "-> $cmd"
         "$cmd" || return $?
     done
