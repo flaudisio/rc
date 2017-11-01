@@ -89,6 +89,24 @@ mkcd()
     cd "$*"
 }
 
+# Cria executável vazio
+cx()
+{
+    local file="$1"
+
+    if [[ -z "$file" ]] ; then
+        echo "uso: cx /caminho/do/arquivo.sh" >&2
+        return 2
+    fi
+
+    (
+        set -ex
+        mkdir -p "$( dirname "$file" )"
+        touch "$file"
+        chmod 755 "$file"
+    )
+}
+
 # Corrige permissões: diretórios = 755, arquivos = 644
 fixperms()
 {
