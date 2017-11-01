@@ -42,9 +42,9 @@ if [[ -n "$_sudo" ]] ; then
 fi
 
 # APT
-alias update="${_sudo}aptitude update"
-alias safeupgrade="${_sudo}aptitude safe-upgrade"
-alias clean="${_sudo}aptitude clean"
+alias update="${_sudo}apt update"
+alias safeupgrade="${_sudo}apt upgrade"
+alias clean="${_sudo}apt clean"
 alias forget-new="${_sudo}aptitude forget-new"
 alias keep-all="${_sudo}aptitude keep-all"
 alias list-new="aptitude search ~N"
