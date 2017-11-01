@@ -13,6 +13,7 @@ HISTCONTROL=ignoredups:ignorespace
 
 HISTSIZE=10000
 HISTFILESIZE=10000
+HISTTIMEFORMAT="[%d/%m/%y %T] "
 
 # Suporte a cores
 if [ -x /usr/bin/dircolors ]; then
