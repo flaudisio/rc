@@ -4,16 +4,21 @@
 [alias]
 	b = branch
 	ck = checkout
+	cs = commit --cleanup scissors
 	d = diff
 	dc = diff --check
 	dca = diff --staged
-	dcc = diff --check --staged
+	dcc = diff --staged --check
 	f = fetch
 	fa = fetch --all
 	fap = fetch --all --prune
 	g = gui
+	k = !gitk --all
 	l = log
+	l1 = log -1
 	lo = log --oneline
+	lp = log --patch
+	lr = ls-remote
 	rv = remote -v
 	s = status
 	sc = show --check
