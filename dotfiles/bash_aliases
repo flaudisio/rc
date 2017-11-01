@@ -265,7 +265,7 @@ gci()
         available_jobs="$(
             egrep -o '^[^[:blank:]].+:' .gitlab-ci.yml \
                 | cut -d ':' -f 1 \
-                | egrep -v '^(image|services|stages|types|before_script|after_script|variables|cache)$' \
+                | egrep -v '^\.|(image|services|stages|types|before_script|after_script|variables|cache)$' \
         )"
 
         if [[ "$( echo "$available_jobs" | wc -l )" == "1" ]] ; then
