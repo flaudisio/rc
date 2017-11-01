@@ -1,6 +1,7 @@
 " Geral
 set wildmenu
 set viminfo=
+set splitright
 
 " Desabilita backups
 set nobackup
