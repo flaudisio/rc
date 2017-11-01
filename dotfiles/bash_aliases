@@ -134,9 +134,20 @@ load_virtualenv()
     export WORKON_HOME=~/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh || return
 
-    [[ "$1" ]] && {
-        workon $1 && echo "Carregando virtualenv: $1"
-    }
+    if [[ -n "$1" ]] ; then
+        echo "Carregando virtualenv: $1"
+        workon "$1"
+    fi
+}
+
+alias lovenv='load_virtualenv'
+
+# nvm
+load_nvm()
+{
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 
 # rbenv
