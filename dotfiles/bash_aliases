@@ -128,8 +128,8 @@ fixperms()
     find "${*}" -type f -exec chmod $v 644 {} \;
 }
 
-# virtualenvwrapper
-load_virtualenvwrapper()
+# virtualenv / virtualenvwrapper
+load_virtualenv()
 {
     export WORKON_HOME=~/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh || return
