@@ -50,9 +50,6 @@ set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Sintaxe de arquivos
-au BufNewFile,BufRead Jenkinsfile set filetype=groovy
-
 " Atalhos
 map 0 ^
 
@@ -63,3 +60,11 @@ map <S-Tab> :tabprevious<cr>
 if filereadable(expand($HOME . "/.vim/autoload/pathogen.vim"))
     execute pathogen#infect()
 endif
+
+" Sintaxe de arquivos
+au BufNewFile,BufRead composer.lock set filetype=json
+au BufNewFile,BufRead docker-compose*.yml set filetype=yaml
+au BufNewFile,BufRead Jenkinsfile set filetype=groovy
+au BufNewFile,BufRead Vagrantfile set filetype=ruby
+au BufNewFile,BufRead *.textile set filetype=redminewiki
+au BufNewFile,BufRead *.tfstate set filetype=json
