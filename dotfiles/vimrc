@@ -34,8 +34,8 @@ if exists('+colorcolumn')
   set colorcolumn=80
 endif
 
-highlight CursorColumn ctermbg=DarkGray
-highlight ColorColumn ctermbg=DarkGray
+highlight CursorColumn ctermbg=234
+highlight ColorColumn ctermbg=234
 
 " Indentação
 " filetype plugin indent on
@@ -62,9 +62,19 @@ if filereadable(expand($HOME . "/.vim/autoload/pathogen.vim"))
 endif
 
 " Sintaxe de arquivos
-au BufNewFile,BufRead composer.lock set filetype=json
-au BufNewFile,BufRead docker-compose*.yml set filetype=yaml
+au BufNewFile,BufRead Jenkinsfile set filetype=groovy
 au BufNewFile,BufRead Jenkinsfile set filetype=groovy
 au BufNewFile,BufRead Vagrantfile set filetype=ruby
+au BufNewFile,BufRead composer.lock set filetype=json
+au BufNewFile,BufRead docker-compose*.yml set filetype=yaml
+au BufNewFile,BufRead kops-edit*yaml set filetype=yaml
+au BufNewFile,BufRead *.kube/config set filetype=yaml
 au BufNewFile,BufRead *.textile set filetype=redminewiki
 au BufNewFile,BufRead *.tfstate set filetype=json
+au BufNewFile,BufRead *.aws/config set filetype=cfg
+au BufNewFile,BufRead *.aws/credentials set filetype=cfg
+
+" Configurações por tipo de arquivo
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype terraform setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
