@@ -45,6 +45,23 @@ fi
 # Funções
 #
 
+alias cply='bat -l yaml'
+
+py-cply()
+{
+    local command="pygmentize -l yaml"
+
+    case $1 in
+        -n)
+            $command | nl -ba
+        ;;
+
+        *)
+            $command
+        ;;
+    esac
+}
+
 vminit()
 {
     [[ "$1" ]] || return 2
