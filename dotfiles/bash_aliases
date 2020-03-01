@@ -169,6 +169,15 @@ fixperms()
     find "${*}" -type f -exec chmod $v 644 {} \;
 }
 
+# ASDF
+load_asdf()
+{
+    . $HOME/.asdf/asdf.sh
+    . $HOME/.asdf/completions/asdf.bash
+}
+
+load_asdf
+
 # virtualenv / virtualenvwrapper
 load_virtualenv()
 {
