@@ -14,10 +14,9 @@ alias lsl='ls -lh'
 alias lsa='ls -lhA'
 alias rm='rm -I'
 
-# SSH
+# SSH / SCP / rsync
 alias scpi='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias sshi='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-
 alias rsynci='rsync -e "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"'
 
 # Misc
