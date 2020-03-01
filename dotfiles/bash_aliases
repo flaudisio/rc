@@ -12,6 +12,7 @@ fi
 
 # Core
 alias -- -='cd -'
+alias l='ls -lh'
 alias sl='ls -lh'
 alias lsl='ls -lh'
 alias lsa='ls -lhA'
