@@ -25,6 +25,7 @@ alias tig='tig --all'
 alias tree-no-git='tree -aI .git'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 alias xc='xclip -sel clipboard'
+alias svim='EDITOR=vim sudoedit -H'
 
 command -v colordiff > /dev/null &&
     alias diff='colordiff'
