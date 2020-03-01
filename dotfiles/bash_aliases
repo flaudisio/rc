@@ -33,6 +33,8 @@ command -v colordiff > /dev/null &&
 command -v most > /dev/null &&
     alias man='man -P most'
 
+# DevOps tools
+alias mtn='molecule test --destroy=never'
 
 # VirtualBox
 if command -v VBoxManage > /dev/null ; then
