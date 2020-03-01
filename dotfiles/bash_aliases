@@ -92,6 +92,19 @@ mkcd()
     cd "$@"
 }
 
+cpmk()
+{
+    if [[ $# -lt 2 ]] ; then
+        echo "uso: $FUNCNAME <origem1 [origemN]> <destino>"
+        return 2
+    fi
+
+    local readonly dest="${@: -1}" # The last argument
+
+    mkdir -pv "$dest" || return
+    cp -vi "$@"
+}
+
 # Cria executável vazio
 cx()
 {
