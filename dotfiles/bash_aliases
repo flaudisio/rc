@@ -105,6 +105,31 @@ cpmk()
     cp -vi "$@"
 }
 
+# aws-vault exec
+ax()
+{
+    local profile
+
+    if [[ "$1" == "ls" ]] ; then
+        echo "+ aws-vault list"
+        aws-vault list
+        return 0
+    fi
+
+    if [[ $# -lt 2 ]] ; then
+        echo "usage:"
+        echo "    ax ls"
+        echo "    ax <profile> <command> [args]"
+        return 2
+    fi
+
+    profile="$1"
+    shift
+
+    echo "+ aws-vault exec "$profile" -- "$@""
+    aws-vault exec "$profile" -- "$@"
+}
+
 # Cria executável vazio
 cx()
 {
