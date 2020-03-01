@@ -89,7 +89,7 @@ vminit()
 mkcd()
 {
     mkdir -pv "$@" || return
-    cd "$*"
+    cd "$@"
 }
 
 # Cria executável vazio
