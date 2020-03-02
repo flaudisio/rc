@@ -192,6 +192,7 @@ load_virtualenv()
     fi
 }
 
+alias lv='load_virtualenv'
 alias lovenv='load_virtualenv'
 
 # nvm
