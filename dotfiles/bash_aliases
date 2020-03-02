@@ -284,8 +284,20 @@ debchangelog()
     zless /usr/share/doc/$1/changelog*.gz
 }
 
+#
+# Inutilitários (ou não)
+#
 
+myip()
+{
+    local my_ip="$( curl -sSL -4 ifconfig.io )"
 
+    echo "$my_ip copied to clipboard!"
 
+    xclip -sel clipboard <( echo -n "$my_ip" )
 }
 
+shrug()
+{
+    xclip -sel clipboard <( echo -n '¯\_(ツ)_/¯' )
+}
