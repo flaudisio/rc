@@ -73,10 +73,10 @@ vminit()
     local hops="${1:-1}"
     local dest=""
 
-    [[ $hops =~ ^[0-9]+$ ]] || {
+    if [[ ! $hops =~ ^[0-9]+$ ]] ; then
         echo "uso: .. [N]" >&2
         return 2
-    }
+    fi
 
     while [[ $hops -gt 0 ]] ; do
         dest="${dest}../"
@@ -266,20 +266,20 @@ docker_cleanup()
 
 pgreps()
 {
-    [[ "$1" ]] || {
-        echo "uso: $FUNCNAME <busca>" >&2
+    if [[ -z "$1" ]] ; then
+        echo "uso: $FUNCNAME <processo>" >&2
         return 2
-    }
+    fi
 
     ps aux | egrep "$1" | grep -v grep
 }
 
 debchangelog()
 {
-    [[ "$1" ]] || {
-        echo "uso: $FUNCNAME <pacote>" >&2
+    if [[ -z "$1" ]] ; then
+        echo "usage: $FUNCNAME <package>" >&2
         return 2
-    }
+    fi
 
     zless /usr/share/doc/$1/changelog*.gz
 }
