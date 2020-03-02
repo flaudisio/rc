@@ -56,4 +56,4 @@ fi
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # Additional files
-[ -n "$( ls -A ~/.bashrc.d/*.sh 2> /dev/null )" ] && . ~/.bashrc.d/*.sh
+[ -n "$( ls -A ~/.bashrc.d/*.bash 2> /dev/null )" ] && . ~/.bashrc.d/*.bash
