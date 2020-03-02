@@ -186,9 +186,8 @@ load_virtualenv()
 
     source /usr/local/bin/virtualenvwrapper.sh || return
 
-    if [[ -n "$1" ]] ; then
-        echo "Carregando virtualenv: $1"
-        workon "$1"
+    if [[ -n "$1" ]] && workon "$1" ; then
+        [[ $? -eq 0 ]] && echo "Loaded virtualenv: $1"
     fi
 }
 
