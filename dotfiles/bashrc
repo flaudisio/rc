@@ -11,8 +11,8 @@ shopt -s histappend
 # Evita linhas duplicadas
 HISTCONTROL=ignoredups:ignorespace
 
-HISTSIZE=10000
-HISTFILESIZE=10000
+HISTSIZE=80000
+HISTFILESIZE=160000
 HISTTIMEFORMAT="[%d/%m/%y %T] "
 
 # Suporte a cores
