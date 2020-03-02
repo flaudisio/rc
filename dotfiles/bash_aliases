@@ -21,7 +21,7 @@ alias rsynci='rsync -e "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChec
 
 # Misc
 alias tig='tig --all'
-alias tree-no-git='tree -aI .git'
+alias tree-no-git='tree -a -I ".git|.terragrunt-cache|.terraform"'
 alias delpyc='find . -iname "*.pyc" -print -delete'
 alias xc='xclip -sel clipboard'
 alias svim='EDITOR=vim sudoedit -H'
