@@ -16,15 +16,20 @@
 	k = !gitk --all
 	l = log
 	l1 = log -1
+	lf = log --pretty=fuller
 	lo = log --oneline
 	lp = log --patch
-	lr = ls-remote
+	ls = log --stat
+	m = merge
+	optimize = gc --aggressive
 	rv = remote -v
 	s = status
-	sc = show --check
 	sw = show
+	swc = show --check
+	sws = show --stat
+	t = tag --sort=version:refname
 	uas = submodule foreach git pull
-	wtf = log --pretty=format:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\\\ by\\\\ %C(auto,blue)%cn%C(auto,reset),\\\\ %C(auto,cyan)%ar%C(auto,reset)%n\\\\ %s%n\" --stat
+	wtf = log --pretty=format:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s%n\" --stat
 [color]
 	ui = auto
 [gui]
