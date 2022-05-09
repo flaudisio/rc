@@ -7,8 +7,10 @@
 	cs = commit --cleanup scissors
 	d = diff
 	dc = diff --check
+	ds = diff --stat
 	dca = diff --staged
 	dcc = diff --staged --check
+	dcs = diff --staged --stat
 	f = fetch
 	fa = fetch --all
 	fap = fetch --all --prune
@@ -20,7 +22,9 @@
 	lo = log --oneline
 	lp = log --patch
 	ls = log --stat
+	l30 = log --oneline -n 30
 	m = merge
+	o = open
 	optimize = gc --aggressive
 	rv = remote -v
 	s = status
@@ -30,6 +34,10 @@
 	t = tag --sort=version:refname
 	uas = submodule foreach git pull
 	wtf = log --pretty=format:\"%C(auto,yellow)%h%C(auto)%d%C(auto,reset) by %C(auto,blue)%cn%C(auto,reset), %C(auto,cyan)%ar%C(auto,reset)%n %s%n\" --stat
+	o = open
+	dn = diff --name-only
+	sl = stash list
+	list-ignored = !find . -type f | sort | git check-ignore --no-index --stdin
 [color]
 	ui = auto
 [gui]
